@@ -30,7 +30,7 @@ RUN git clone --no-checkout -b master --depth 1 --single-branch https://github.c
     chown -R www-data:www-data /var/www/spotweb && \
     sed -i '/$guid->setAttribute/a \ \t\t\t$guidUrl = $this->_tplHelper->makeBaseUrl("full") . '\''details/'\'' . $spot['\''messageid'\''] . $this->_tplHelper->makeApiRequestString();' /var/www/spotweb/lib/page/SpotPage_newznabapi.php && \
     sed -i '/$item->appendChild($doc->createElement('\''link'\'', $nzbUrl));/a \ \t\t\t$item->appendChild($doc->createElement('\''comments'\'', $guidUrl));' /var/www/spotweb/lib/page/SpotPage_newznabapi.php  && \
-    sed -i '/RewriteRule api/?$ index.php?page=newznabapi/a \ \tRewriteRule details/([^/]+) index.php?page=getspot&messageid=$1 [L]' /var/www/spotweb/.htaccess
+    sed -i '/RewriteRule api/a \ \tRewriteRule details/([^/]+) index.php?page=getspot&messageid=$1 [L]' /var/www/spotweb/.htaccess
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod u+x /entrypoint.sh
