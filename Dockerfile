@@ -1,9 +1,9 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 LABEL Author="Jeroen Geusebroek <me@jeroengeusebroek.nl>"
 
 ENV DEBIAN_FRONTEND="noninteractive" \
     TERM="xterm" \
-    APTLIST="apache2 php8.1 php8.1-curl php8.1-gd php8.1-gmp php8.1-mysql php8.1-pgsql php8.1-xml php8.1-xmlrpc php8.1-mbstring php8.1-zip git-core cron wget jq locales"
+    APTLIST="apache2 php8.3 php8.3-curl php8.3-gd php8.3-gmp php8.3-mysql php8.3-pgsql php8.3-xml php8.3-xmlrpc php8.3-mbstring php8.3-zip git-core cron wget jq locales"
 
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup &&\
     echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache && \
@@ -21,7 +21,7 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup &&\
     rm -r /var/www/html && \
     rm -rf /tmp/*
 
-RUN git clone --no-checkout -b master --depth 1 --single-branch https://github.com/spotweb/spotweb.git /var/www/spotweb && \
+RUN git clone --no-checkout -b develop --depth 1 --single-branch https://github.com/spotweb/spotweb.git /var/www/spotweb && \
     cd /var/www/spotweb && \
     git config core.symlinks false && \
     git checkout && \

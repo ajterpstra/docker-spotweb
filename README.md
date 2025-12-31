@@ -1,9 +1,8 @@
-[![](https://images.microbadger.com/badges/image/jgeusebroek/spotweb.svg)](https://microbadger.com/images/jgeusebroek/spotweb "Get your own image badge on microbadger.com")
 [![](https://img.shields.io/docker/pulls/jgeusebroek/spotweb.svg)](https://hub.docker.com/r/jgeusebroek/spotweb/)
 
 # Docker Spotweb image
 
-An image running [ubuntu/20.04](https://hub.docker.com/_/ubuntu/) Linux and [Spotweb](https://github.com/spotweb/spotweb).
+An image running [ubuntu/22.04](https://hub.docker.com/_/ubuntu/) Linux and [Spotweb](https://github.com/spotweb/spotweb).
 
 ## Requirements
 
@@ -88,6 +87,7 @@ When this all is finished, restart spotweb using `docker-compose restart`. You s
 | `SPOTWEB_DB_PASS` | The database server password. |
 | `SPOTWEB_CRON_RETRIEVE` | Cron schedule for article retrieval. E.g. `*/15 * * * *` for every fifteen minutes.|
 | `SPOTWEB_CRON_CACHE_CHECK` | Cron schedule for article cache sanity check. E.g. `10 */1 * * *` for 10 minutes after every hour. |
+| `WEBSERVER_PORT` | Change the webserver port (for when you can't use port mapping with host network for example)|
 
 ## License
 
