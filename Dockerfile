@@ -22,12 +22,8 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup &&\
     rm -rf /tmp/*
 
 RUN git clone --no-checkout -b develop --depth 1 --single-branch https://github.com/spotweb/spotweb.git /var/www/spotweb
-RUN cd /var/www/spotweb
-RUN cd /var/www/spotweb; git config core.symlinks false
-RUN cd /var/www/spotweb; git checkout
-RUN rm -rf /var/www/spotweb/.git
-RUN chmod -R 775 /var/www/spotweb
-RUN chown -R www-data:www-data /var/www/spotweb
+RUN cd /var/www/spotweb; git config core.symlinks false && git checkout
+RUN rm -rf /var/www/spotweb/.git && chmod -R 775 /var/www/spotweb && chown -R www-data:www-data /var/www/spotweb
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod u+x /entrypoint.sh
