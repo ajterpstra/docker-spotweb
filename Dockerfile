@@ -1,14 +1,14 @@
-FROM ubuntu:22.04
+FROM ubuntu:26.04
 LABEL Author="Jeroen Geusebroek <me@jeroengeusebroek.nl>"
 
 ENV DEBIAN_FRONTEND="noninteractive" \
     TERM="xterm" \
-    APTLIST="apache2 php8.3 php8.3-curl php8.3-gd php8.3-gmp php8.3-mysql php8.3-pgsql php8.3-xml php8.3-xmlrpc php8.3-mbstring php8.3-zip git-core cron wget jq locales"
+    APTLIST="apache2 php8.5 php8.5-curl php8.5-gd php8.5-gmp php8.5-mysql php8.5-pgsql php8.5-xml php8.5-xmlrpc php8.5-mbstring php8.5-zip git-core cron wget jq locales"
 
 RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup &&\
     echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache && \
     apt-get -q update && \
-    apt -qy install software-properties-common && add-apt-repository ppa:ondrej/php && \
+    apt -qy install software-properties-common && \
     apt-get -qy dist-upgrade && \
     apt-get install -qy $APTLIST && \
     a2enmod headers && \

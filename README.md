@@ -2,7 +2,7 @@
 
 # Docker Spotweb image
 
-An image running [ubuntu/22.04](https://hub.docker.com/_/ubuntu/) Linux and [Spotweb](https://github.com/spotweb/spotweb).
+An image running [ubuntu/26.04](https://hub.docker.com/_/ubuntu/) Linux and [Spotweb](https://github.com/spotweb/spotweb).
 
 ## Requirements
 
