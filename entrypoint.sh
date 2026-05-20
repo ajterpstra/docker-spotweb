@@ -73,4 +73,4 @@ if [[ -n $rt ]]; then
     /etc/init.d/apache2 restart
 fi
 
-tail -F /var/log/apache2/* /dev/stdout /dev/stderr
+tail -F /var/log/apache2/*
