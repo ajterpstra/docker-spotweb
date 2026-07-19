@@ -24,6 +24,9 @@ RUN echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup &&\
 RUN git clone --no-checkout -b develop --depth 1 --single-branch https://github.com/spotweb/spotweb.git /var/www/spotweb
 RUN cd /var/www/spotweb; git config core.symlinks false && git checkout
 RUN rm -rf /var/www/spotweb/.git && chmod -R 775 /var/www/spotweb && chown -R www-data:www-data /var/www/spotweb
+RUN sed -i '/$guid->setAttribute/a \ \t\t\t$guidUrl = $this->_tplHelper->makeBaseUrl("full") . '\''details/'\'' . $spot['\''messageid'\''] . $this->_tplHelper->makeApiRequestString();' /var/www/spotweb/lib/page/SpotPage_newznabapi.php 
+RUN sed -i '/$item->appendChild($doc->createElement('\''link'\'', $nzbUrl));/a \ \t\t\t$item->appendChild($doc->createElement('\''comments'\'', $guidUrl));' /var/www/spotweb/lib/page/SpotPage_newznabapi.php 
+RUN sed -i '/RewriteRule api/a \ \tRewriteRule details/([^/]+) index.php?page=getspot&messageid=$1 [L]' /var/www/spotweb/.htaccess
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod u+x /entrypoint.sh
