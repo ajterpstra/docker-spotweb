@@ -44,7 +44,7 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v8
           push: true
           tags: |
-            jgeusebroek/spotweb:${{ env.DATE_TAG }}
-            jgeusebroek/spotweb:latest
-            ghcr.io/jgeusebroek/spotweb:${{ env.DATE_TAG }}
-            ghcr.io/jgeusebroek/spotweb:latest
+            ajterpstra/spotweb:${{ env.DATE_TAG }}
+            ajterpstra/spotweb:latest
+            ghcr.io/ajterpstra/spotweb:${{ env.DATE_TAG }}
+            ghcr.io/ajterpstra/spotweb:latest
